@@ -1,14 +1,22 @@
-// function makeWord(lettersObject) {
-//   const result = [];
-//   const arr = Object.entries(lettersObject);
-//   arr.forEach((element) => {
-//     const letter = element[0];
-//     element[1].forEach((num) => {
-//       result[num] = letter;
-//     });
-//   });
-//   return result.join('');
-// }
-// // return Object.entries(lettersObject);
+function sellTickets(queue) {
+  const delivery = Array.from(queue);
+  if (queue[0] !== 25) return false;
+  let count = queue[0];
+  let bol;
+  delivery.shift();
+  for (let i = 1; i < queue.length - 1; i += 1) {
+    if (delivery[i] === 25) {
+      count += delivery[i];
+      delivery.shift();
+    }
+    if (delivery[i] > 25 && delivery[i] > count) bol = false;
+    if (delivery[i] > 25 && delivery[i] < count) {
+      count -= 25;
+      delivery.shift();
+    }
+    if (delivery.length === 0) bol = true;
+  }
+  return bol;
+}
 
-// console.log(makeWord({ a: [0, 1], b: [2, 3], c: [4, 5] }));
+console.log(sellTickets([25, 25, 50]));
