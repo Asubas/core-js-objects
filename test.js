@@ -1,22 +1,18 @@
-function sellTickets(queue) {
-  const delivery = Array.from(queue);
-  if (queue[0] !== 25) return false;
-  let count = queue[0];
-  let bol;
-  delivery.shift();
-  for (let i = 1; i < queue.length - 1; i += 1) {
-    if (delivery[i] === 25) {
-      count += delivery[i];
-      delivery.shift();
-    }
-    if (delivery[i] > 25 && delivery[i] > count) bol = false;
-    if (delivery[i] > 25 && delivery[i] < count) {
-      count -= 25;
-      delivery.shift();
-    }
-    if (delivery.length === 0) bol = true;
-  }
-  return bol;
-}
-
-console.log(sellTickets([25, 25, 50]));
+// function sellTickets(queue) {
+//   if (queue[0] !== 25) return false;
+//   let count = queue[0];
+//   let i = 1;
+//   while (i < queue.length) {
+//     if (i === queue.length) {
+//       return true;
+//     }
+//     if (queue[i] === 25) count += 25;
+//     if (queue[i] > count) {
+//       if (queue[i] === 50 && count < 25) return false;
+//       if (queue[i] === 100 && count < 75) return false;
+//     }
+//     i += 1;
+//   }
+//   return true;
+// }
+// console.log(sellTickets([25, 25, 50]));
